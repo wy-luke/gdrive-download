@@ -1,0 +1,33 @@
+name: "GDrive download"
+description: "Download a large file from Google Drive."
+
+inputs:
+  file-url:
+    description: "File url"
+    required: true
+
+  file-name:
+    description: "File name"
+    required: true
+
+  file-path:
+    description: "File path"
+    required: true
+    default: ${{ GITHUB_WORKSPACE }}
+
+env:
+  path: ${{ GITHUB_WORKSPACE }}
+
+runs:
+  using: "composite"
+  steps:
+    - run: pip install gdown
+      shell: bash
+
+    - uses: actions/cache@v3
+      with:
+        path: "${{ inputs.file-path }}/${{ inputs.file-name }}"
+        key: ${{ inputs.file-url }}
+
+    - run: gdown "${{ inputs.file-url }}" -O "${{ inputs.file-path }}/${{ inputs.file-name }}"
+      shell: bash
