@@ -1,0 +1,27 @@
+on: [push]
+
+env:
+  file-url: "https://drive.google.com/file/d/1lKVAUmGS3y62XQmDO0GwwCSWnGXF5nQ5/view?usp=share_link"
+  file-name: "test.sh"
+  file-path: "$GITHUB_WORKSPACE/scripts"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: A job to test
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: wy-luke/gdrive-download
+        with:
+          file-url: ${{ env.file-url }}
+          file-name: ${{ env.file-name }}
+
+      - uses: wy-luke/gdrive-download
+        with:
+          file-url: ${{ env.file-url }}
+          file-name: ${{ env.file-name }}
+          file-path: ${{ env.file-path }}
+
+      - run: bash ${{ env.file-path }}/${{ env.file-name }}
+        shell: bash
