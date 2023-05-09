@@ -3,7 +3,7 @@ description: "Download a large file from Google Drive."
 
 inputs:
   file-url:
-    description: "File url"
+    description: "File share url, or ID only"
     required: true
 
   file-name:
@@ -26,5 +26,5 @@ runs:
         path: "${{ inputs.file-path }}/${{ inputs.file-name }}"
         key: ${{ inputs.file-url }}
 
-    - run: gdown "${{ inputs.file-url }}" -O "${{ inputs.file-name }}"
+    - run: gdown --fuzzy "${{ inputs.file-url }}" -O "${{ inputs.file-name }}"
       shell: bash
