@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: wy-luke/gdrive-download
+      - uses: wy-luke/gdrive-download@main
         with:
           file-url: ${{ env.file-url }}
           file-name: ${{ env.file-name }}
@@ -22,7 +22,7 @@ jobs:
       - run: bash ${{ env.file-name }}
         shell: bash
 
-      - uses: wy-luke/gdrive-download
+      - uses: wy-luke/gdrive-download@main
         with:
           file-url: ${{ env.file-url }}
           file-name: ${{ env.file-name }}
