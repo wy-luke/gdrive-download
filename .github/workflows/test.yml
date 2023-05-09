@@ -22,11 +22,11 @@ jobs:
       - run: bash ${{ env.file-name }}
         shell: bash
 
-      - uses: wy-luke/gdrive-download@main
-        with:
-          file-url: ${{ env.file-url }}
-          file-name: ${{ env.file-name }}
-          file-path: ${{ env.file-path }}
+      # - uses: wy-luke/gdrive-download@main
+      #   with:
+      #     file-url: ${{ env.file-url }}
+      #     file-name: ${{ env.file-name }}
+      #     file-path: ${{ env.file-path }}
 
-      - run: bash ${{ env.file-path }}/${{ env.file-name }}
-        shell: bash
+      # - run: bash ${{ env.file-path }}/${{ env.file-name }}
+      #   shell: bash

@@ -10,10 +10,10 @@ inputs:
     description: "File name"
     required: true
 
-  file-path:
-    description: "File path"
-    required: true
-    default: ${{ GITHUB_WORKSPACE }}
+  # file-path:
+  #   description: "File path"
+  #   required: true
+  #   default: ${{ GITHUB_WORKSPACE }}
 
 env:
   path: ${{ GITHUB_WORKSPACE }}
@@ -29,5 +29,5 @@ runs:
         path: "${{ inputs.file-path }}/${{ inputs.file-name }}"
         key: ${{ inputs.file-url }}
 
-    - run: gdown "${{ inputs.file-url }}" -O "${{ inputs.file-path }}/${{ inputs.file-name }}"
+    - run: gdown "${{ inputs.file-url }}" -O "${{ inputs.file-name }}"
       shell: bash
